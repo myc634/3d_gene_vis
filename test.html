@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLB and PLY Point Cloud Viewer</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <!-- 第一行 -->
+  <div style="display: flex;">
+    <!-- 第一列 -->
+    <div style="width: 33.33%;">
+      <h2>Point Cloud GT Scene 1</h2>
+      <model-viewer id="glb-point-cloud-viewer1" style="width: 100%; height: 400px;" camera-controls auto-rotate></model-viewer>
+      <select id="glb-point-cloud-selector1">
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/gt/gt_pts0.glb">Point Cloud 1</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/gt/gt_pts1.glb">Point Cloud 2</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/gt/merged.glb">Both</option>
+      </select>
+    </div>
+    <!-- 第二列 -->
+    <div style="width: 33.33%;">
+      <h2>Point Cloud BaseLine Scene 1</h2>
+      <model-viewer id="glb-point-cloud-viewer2" style="width: 100%; height: 400px;" camera-controls auto-rotate></model-viewer>
+      <select id="glb-point-cloud-selector2">
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/base/base_pts0.glb">Point Cloud 1</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/base/base_pts1.glb">Point Cloud 2</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/base/merged.glb">Both</option>
+      </select>
+    </div>
+    <!-- 第三列 -->
+    <div style="width: 33.33%;">
+      <h2>Point Cloud Guide Scene 1</h2>
+      <model-viewer id="glb-point-cloud-viewer3" style="width: 100%; height: 400px;" camera-controls auto-rotate></model-viewer>
+      <select id="glb-point-cloud-selector3">
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/guide/guide_pts0.glb">Point Cloud 1</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/guide/guide_pts1.glb">Point Cloud 2</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_0/guide/merged.glb">Both</option>
+      </select>
+    </div>
+  </div>
+
+  <div style="display: flex;">
+    <!-- 第一列 -->
+    <div style="width: 33.33%;">
+      <h2>Point Cloud GT Scene 2</h2>
+      <model-viewer id="glb-point-cloud-viewer1" style="width: 100%; height: 400px;" camera-controls auto-rotate></model-viewer>
+      <select id="glb-point-cloud-selector1">
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/gt/gt_pts0.glb">Point Cloud 1</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/gt/gt_pts1.glb">Point Cloud 2</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/gt/merged.glb">Both</option>
+      </select>
+    </div>
+    <!-- 第二列 -->
+    <div style="width: 33.33%;">
+      <h2>Point Cloud BaseLine Scene 2</h2>
+      <model-viewer id="glb-point-cloud-viewer2" style="width: 100%; height: 400px;" camera-controls auto-rotate></model-viewer>
+      <select id="glb-point-cloud-selector2">
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/base/base_pts0.glb">Point Cloud 1</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/base/base_pts1.glb">Point Cloud 2</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/base/merged.glb">Both</option>
+      </select>
+    </div>
+    <!-- 第三列 -->
+    <div style="width: 33.33%;">
+      <h2>Point Cloud Guide Scene 2</h2>
+      <model-viewer id="glb-point-cloud-viewer3" style="width: 100%; height: 400px;" camera-controls auto-rotate></model-viewer>
+      <select id="glb-point-cloud-selector3">
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/guide/guide_pts0.glb">Point Cloud 1</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/guide/guide_pts1.glb">Point Cloud 2</option>
+        <option value="https://myc634.github.io/3d_gene_vis/vis_v2/scene_1/guide/merged.glb">Both</option>
+      </select>
+    </div>
+  </div>
+
+  <script>
+    const connectPointCloudViewerAndSelector = (viewerId, selectorId) => {
+      const viewer = document.getElementById(viewerId);
+      const selector = document.getElementById(selectorId);
+      viewer.src = selector.value;
+      // 当选择器的值改变时，切换展示的点云
+      selector.addEventListener('change', function() {
+        viewer.src = selector.value;
+      });
+    };
+  
+    connectPointCloudViewerAndSelector('glb-point-cloud-viewer1', 'glb-point-cloud-selector1');
+    connectPointCloudViewerAndSelector('glb-point-cloud-viewer2', 'glb-point-cloud-selector2');
+    connectPointCloudViewerAndSelector('glb-point-cloud-viewer3', 'glb-point-cloud-selector3');
+    connectPointCloudViewerAndSelector('glb-point-cloud-viewer4', 'glb-point-cloud-selector4');
+    connectPointCloudViewerAndSelector('glb-point-cloud-viewer5', 'glb-point-cloud-selector5');
+    connectPointCloudViewerAndSelector('glb-point-cloud-viewer6', 'glb-point-cloud-selector6');
+  </script>
+</body>
+</html>
